@@ -1,10 +1,13 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
-  res.send("<h1>Hello, my website works!</h1>");
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
 app.listen(3000, () => {
   console.log("Server running! Open http://localhost:3000");
-});
+});;
